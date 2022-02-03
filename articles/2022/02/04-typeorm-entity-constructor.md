@@ -6,8 +6,7 @@ TypeORM 공식문서의 [entity 페이지](https://typeorm.io/#/entities)에는 
     Since ORM creates instances of entity classes when loading from the database,
     therefore it is not aware of your constructor arguments.
 
-DB에서 데이터를 불러올 때, ORM이 entity 클래스의 인스턴스를 생성하기 때문에
-
+DB에서 데이터를 불러올 때, ORM이 entity 클래스의 인스턴스를 생성하기 때문에  
 entity constructor의 인수는 반드시 optional 이어야 한다고 설명합니다.
 
 <br>
@@ -53,8 +52,7 @@ const user = new User('verycosy@kakao.com', '010-1111-2222');
 await this.userRepository.save(user); // DB에 저장 완료
 ```
 
-그 이유는 인스턴스를 생성하는 시점에서는 단순히 값을 대입하고만 있기 때문인데요,
-
+그 이유는 인스턴스를 생성하는 시점에서는 단순히 값을 대입하고만 있기 때문인데요,  
 생성자 안에서 유효성 검사하는 상황을 가정해보겠습니다.
 
 ```typescript
@@ -71,10 +69,8 @@ export class User {
 }
 ```
 
-이렇게 전달받은 값을 **참조**하게 되면 문제가 생깁니다.
-
-ORM이 User 인스턴스를 생성할 때, `email`과 `phoneNumber`는 값이 `undefined` 이기 때문에 참조 오류가 발생합니다.
-
+이렇게 전달받은 값을 **참조**하게 되면 문제가 생깁니다.  
+ORM이 User 인스턴스를 생성할 때, `email`과 `phoneNumber`는 값이 `undefined` 이기 때문에 참조 오류가 발생합니다.  
 따라서 TypeORM에서는 인수를 통한 entity 객체는 정적 메소드를 활용하여 생성하는 편이 좋습니다.
 
 <br>
@@ -103,8 +99,7 @@ export class User {
 
 <br>
 
-협업 과정에서 다른 팀원이 constructor를 통해 인스턴스 생성하는 걸 방지하고 싶다면
-
+협업 과정에서 다른 팀원이 constructor를 통해 인스턴스 생성하는 걸 방지하고 싶다면  
 private 키워드도 고려해볼 수 있습니다.
 
 ```typescript
